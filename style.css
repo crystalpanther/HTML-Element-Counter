@@ -1,0 +1,22 @@
+body {
+  margin: 0 auto;
+  text-align: center;
+}
+body h1 {
+  text-align: center;
+}
+body #form {
+  padding: 0 15px;
+  width: 200px;
+  margin: 0 auto;
+}
+body #form label,
+body #form input {
+  margin: 15px auto;
+  width: 100%;
+}
+body .window {
+  width: 100%;
+  text-align: center;
+  margin: 20px auto;
+}
