@@ -10,7 +10,7 @@ function countElement (elem) {
 }
 function loadURL() {
         var tag = $('#htmlElement');
-        var url = 'page.html';
+        var url = $('#url').val();
         var window = $('.window');
         var x = countElement(tag); //send for the function as an argument '#htmlElement' value
         $.ajax({
@@ -21,23 +21,6 @@ function loadURL() {
             crossDomain: true,
             success: function(data) {
                 var element = $('<' + x + '>'); //take an input value and
-
-                var d = new Date(); //create a new object for take current time
-                var curr_date = d.getDate();
-
-                var month = new Array();
-                month[0] = "January";
-                month[1] = "February";
-                month[2] = "March";
-                month[3] = "April";
-                month[4] = "May";
-                month[5] = "June";
-                month[6] = "July";
-                month[7] = "August";
-                month[8] = "September";
-                month[9] = "October";
-                month[10] = "November";
-                month[11] = "December";
 
                 var curr_month = month[d.getMonth()];
                 var curr_year = d.getFullYear();
