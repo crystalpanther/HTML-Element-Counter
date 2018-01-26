@@ -16,7 +16,6 @@
     <label for="htmlElement">Enter HTML Element Tag</label>
     <input type="text" id="htmlElement" name="htmlElement">
 
-
 </form>
 <button onclick="loadURL()">Send</button>
 
@@ -33,9 +32,19 @@
     function loadURL () {
         var htmlElement = $('#htmlElement').val();
         var url = $('#url').val();
+
+//        if (!url.match(/^[a-zA-Z]+:\/\//))
+//        {
+//            url = 'https://' + url;
+//        }
+
+        var domain = url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/img);
+        domain = domain[0];
+        console.log(domain, typeof (url));
+
         var windows = $('.window');
         var staticOut = $('#content');
-        var res;
+        var duration;
         var formData = {
             'url' : url,
             'htmlElement' : htmlElement
@@ -63,8 +72,8 @@
                 var pages = element.html(data);
                 var length = $(htmlElement, element).length;
 
-                windows.text('URL ' +  url +  ' Fetched on ' + nowTime + ' , took ' + res + 'msec. ' +'Element ' +  '<' +
-                    htmlElement + '>' + ' appeared ' + length + ' times in page.'); // output
+                windows.text('URL ' +  url +  ' Fetched on ' + nowTime + ' , took ' + duration + 'msec. ' +'Element ' +  '<' +
+                    htmlElement + '>' + ' appeared ' + length + ' times in page.' + ' ' + domain); // output
             },
             error: function () {
                 console.log('error');
@@ -73,7 +82,7 @@
         });
 
         var b = Date.now();
-        res = b - a;
+        duration = b - a;
 
         $.ajax({
             url:'dataBase.php',
@@ -81,13 +90,14 @@
             data: {
                 'url': url,
                 'htmlElement': htmlElement,
-                'time': res
+                'domain': domain,
+                'duration' : duration
             },
             headers: {
                 'Access-Control-Allow-Origin': '*' //access CORS
             },
             success: function(data) {
-                staticOut.text(data);
+                staticOut.html(data);
             },
             error: function () {
                 console.log('error');
