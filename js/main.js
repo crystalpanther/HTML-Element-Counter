@@ -1,49 +1,102 @@
 /**
  * Created by elina on 1/2/2018.
  */
-var a = Date.now(); // start time for all scripts
-var res;
-function countElement (elem) {
-    var result;
-    result = elem.val(); //take an input with "htmlElement" id
-    return result; //return value
-}
-function loadURL() {
-        var tag = $('#htmlElement');
-        var url = $('#url').val();
-        var window = $('.window');
-        var x = countElement(tag); //send for the function as an argument '#htmlElement' value
-        $.ajax({
-            url: url, //using test page for counting elements
-            cache: false,
-            type: "POST",
-            contentType: 'application/javascript',
-            crossDomain: true,
-            success: function(data) {
-                var element = $('<' + x + '>'); //take an input value and
 
-                var curr_month = month[d.getMonth()];
-                var curr_year = d.getFullYear();
-                var time = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
 
-                var timeSec = res;
 
-                var pages = element.html(data);
-                var length = $(x, element).length;
-                window.text(
-                    'URL' + ' ' + url + ' ' + 'Fetched on' + ' ' +
-                    curr_date + ' ' + curr_month + ' ' + curr_year + ' ' + time + ', ' + 'took' + ' ' + timeSec + ' msec. ' +
-                    'Element' + ' ' + tag.val() + ' ' + 'appeared ' + length + ' ' + 'times in page.'
-                );
-            },
-            error: function () {
-                window.text('Sorry, try again');
-            }
-        });
+function loadURL () {
+    var duration;
+    var start = new Date();
+    var url = $('#url').val();
+    var htmlElement = $('#htmlElement');
+
+    //        if (!url.match(/^[a-zA-Z]+:\/\//))
+    //        {
+    //            url = 'https://' + url;
+    //        }
+
+
+    var domain = url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/img);
+    if(domain) {
+        domain = domain[0];
     }
-var ok = [];
-for(var i = 0; i < 1e+5/*100000*/;i++) ok.push(i);
-var b = Date.now(); //end time for all scripts
 
-res = b - a; // counting time that take a request
-console.log(res);
+    var windows = $('.window');
+    var staticOut = $('#content');
+
+
+    var formData = {
+        url: url,
+        'htmlElement': htmlElement,
+        'domain': domain,
+        'duration' : duration
+    }
+    $.ajax({
+        url:'parsing.php',
+        type:'POST',
+        data: formData,
+        headers: {
+            'Access-Control-Allow-Origin': '*' //access CORS
+        },
+        success: function (data) {
+            var d = new Date(); //identify the date
+
+            var day  = d.getDate();
+            var month = d.getMonth() + 1;
+            var year = d.getFullYear();
+            var hour = d.getHours();
+            var min = d.getMinutes();
+
+            var nowTime = day + '/' + month + '/' + year + ' ' + hour + ':' + min; //show up the time
+
+            var el = '<' + htmlElement + '>';
+
+
+            var element = $(el); //take an input value
+
+
+            var pages = element.html(data);
+            var length = $(htmlElement, element).length;
+            staticOut.text(data);
+            windows.text('URL ' +  url +  ' Fetched on ' + nowTime + ' , took ' + duration + 'msec. ' +'Element ' +  '<' +
+                htmlElement + '>' + ' appeared ' + length + ' times in page.' + ' ' + domain); // output
+        },
+        error: function () {
+            console.log('error');
+        }
+
+    });
+    duration = new Date() - start;
+
+}
+function getStat() {
+    var url = $('#url').val();
+    var htmlElement = $('#htmlElement');
+    var domain = url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/img);
+    domain = domain[0];
+
+    var windows = $('.window');
+    var staticOut = $('#content');
+
+
+    $.ajax({
+        url:'dataBase.php',
+        type:'GET',
+        data: {
+            'url': url,
+            'htmlElement': htmlElement,
+            'domain': domain
+        },
+        headers: {
+            'Access-Control-Allow-Origin': '*' //access CORS
+        },
+        success: function(data) {
+            staticOut.html(data);
+        },
+        error: function () {
+            console.log('error');
+        }
+    });
+}
+
+

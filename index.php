@@ -16,8 +16,8 @@
     <label for="htmlElement">Enter HTML Element Tag</label>
     <input type="text" id="htmlElement" name="htmlElement">
 
-    <input type="submit" id="button" value="Send" onclick="validation($('#url'), $('#htmlElement'))">
-    <input type="submit" value="Get stat" onclick="getStat($('#url'), $('#htmlElement'))">
+<input type="submit" id="button" value="Send" onclick="loadURL()">
+<input type="submit" value="Get stat" onclick="getStat()">
 </form>
 
 
