@@ -66,6 +66,9 @@ html .form-container .wrapper form .element input {
   border: solid 2px white;
   outline: none;
   background-color: white !important;
+  -webkit-box-shadow: 10px 10px 16px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 16px -8px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 16px -8px rgba(0, 0, 0, 0.75);
 }
 body .form-container .wrapper form .url input:focus,
 html .form-container .wrapper form .url input:focus,
@@ -127,44 +130,63 @@ html .form-container .wrapper form .buttons .button {
   cursor: pointer;
   border: solid 1px transparent;
   outline: none;
+  -webkit-box-shadow: 10px 10px 16px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 16px -8px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 16px -8px rgba(0, 0, 0, 0.75);
 }
 body .form-container .wrapper form .buttons .button.pull-right,
 html .form-container .wrapper form .buttons .button.pull-right {
   float: right;
 }
-body .preload-three,
-html .preload-three {
+body .output,
+html .output {
+  padding: 50px 10px;
+  box-sizing: border-box;
+}
+body .window,
+html .window {
+  font-family: 'Inconsolata', monospace;
+}
+body .window .preloader .preload-three,
+html .window .preloader .preload-three {
   position: relative;
   width: 100px;
   height: 100px;
-  top: 200px;
+  top: 0;
   margin: 0 auto;
+  visibility: hidden;
+  opacity: 0;
 }
-body .preload-three .circle-three,
-html .preload-three .circle-three {
+body .window .preloader .preload-three.visible,
+html .window .preloader .preload-three.visible {
+  visibility: visible;
+  opacity: 1;
+}
+body .window .preloader .preload-three .circle-three,
+html .window .preloader .preload-three .circle-three {
   position: absolute;
-  width: 17px;
-  height: 17px;
+  width: 10px;
+  height: 10px;
   border-radius: 100%;
-  background-color: #000;
+  background-color: #4b4b4b;
   float: left;
 }
-body .preload-three #center,
-html .preload-three #center {
+body .window .preloader .preload-three #center,
+html .window .preloader .preload-three #center {
   top: 100%;
   left: 50%;
   transform: translate(-50%, -100%);
   animation: orbit5 1s ease-in-out 250ms infinite;
 }
-body .preload-three #left,
-html .preload-three #left {
+body .window .preloader .preload-three #left,
+html .window .preloader .preload-three #left {
   top: 100%;
   left: 0%;
   transform: translate(0%, -100%);
   animation: orbit6 1s ease-in-out 0s infinite;
 }
-body .preload-three #right,
-html .preload-three #right {
+body .window .preloader .preload-three #right,
+html .window .preloader .preload-three #right {
   top: 100%;
   left: 100%;
   transform: translate(-100%, -100%);
@@ -203,9 +225,14 @@ html .preload-three #right {
     transform: translate(-100%, -100%);
   }
 }
+body #content,
+html #content {
+  font-family: 'Inconsolata', monospace;
+}
+body #content li span,
+html #content li span {
+  font-weight: bold;
+}
 li {
   list-style-type: none;
-}
-#content li span {
-  font-weight: bold;
 }

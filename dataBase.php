@@ -9,7 +9,7 @@
 
 session_start();
 
-
+$seconds = 10;
 CONST USERNAME = 'root';
 CONST PASSWORD = '';
 CONST DBNAME   = 'stat';

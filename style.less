@@ -45,6 +45,9 @@ body, html {
             border: solid 2px white;
             outline:none;
             background-color: white !important;
+            -webkit-box-shadow: 10px 10px 16px -8px rgba(0,0,0,0.75);
+            -moz-box-shadow: 10px 10px 16px -8px rgba(0,0,0,0.75);
+            box-shadow: 10px 10px 16px -8px rgba(0,0,0,0.75);
             &:focus {
               border: solid 2px blueviolet;
             }
@@ -82,6 +85,9 @@ body, html {
             cursor: pointer;
             border: solid 1px transparent;
             outline: none;
+            -webkit-box-shadow: 10px 10px 16px -8px rgba(0,0,0,0.75);
+            -moz-box-shadow: 10px 10px 16px -8px rgba(0,0,0,0.75);
+            box-shadow: 10px 10px 16px -8px rgba(0,0,0,0.75);
             &.pull-right {
               float: right;
             }
@@ -91,80 +97,97 @@ body, html {
     }
 
   }
-  .preload-three {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    top: 200px;
-    margin: 0 auto;
-    .circle-three {
-      position: absolute;
-      width: 17px;
-      height: 17px;
-      border-radius: 100%;
-      background-color: #000;
-      float: left;
+  .output {
+    padding: 50px 10px;
+    box-sizing: border-box;
+  }
+  .window {
+    .preloader {
+      .preload-three {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        top: 0;
+        margin: 0 auto;
+        visibility: hidden;
+        opacity: 0;
+        &.visible {
+          visibility: visible;
+          opacity: 1;
+        }
+        .circle-three {
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          border-radius: 100%;
+          background-color: #4b4b4b;
+          float: left;
+        }
+        #center {
+          top: 100%;
+          left: 50%;
+          transform: translate(-50%, -100%);
+          animation: orbit5 1s ease-in-out 250ms infinite;
+        }
+        #left {
+          top: 100%;
+          left: 0%;
+          transform: translate(0%, -100%);
+          animation: orbit6 1s ease-in-out 0s infinite;
+        }
+        #right {
+          top: 100%;
+          left: 100%;
+          transform: translate(-100%, -100%);
+          animation: orbit7 1s ease-in-out 140ms  infinite;
+        }
+        @keyframes orbit5 {
+          0% {
+            transform: translate(-50%, -100%);
+          }
+          50% {
+            transform:  translate(-50%, -60px);
+          }
+          100% {
+            transform:  translate(-50%, -100%);
+          }
+        }
+        @keyframes orbit6 {
+          0% {
+            transform: translate(0%, -100%);
+          }
+          50% {
+            transform:  translate(0%, -60px);
+          }
+          100% {
+            transform:  translate(0%, -100%);
+          }
+        }
+        @keyframes orbit7 {
+          0% {
+            transform: translate(-100%, -100%);
+          }
+          50% {
+            transform:  translate(-100%, -60px);
+          }
+          100% {
+            transform:  translate(-100%, -100%);
+          }
+        }
+      }
     }
-    #center {
-      top: 100%;
-      left: 50%;
-      transform: translate(-50%, -100%);
-      animation: orbit5 1s ease-in-out 250ms infinite;
-    }
-    #left {
-      top: 100%;
-      left: 0%;
-      transform: translate(0%, -100%);
-      animation: orbit6 1s ease-in-out 0s infinite;
-    }
-    #right {
-      top: 100%;
-      left: 100%;
-      transform: translate(-100%, -100%);
-      animation: orbit7 1s ease-in-out 140ms  infinite;
-    }
-    @keyframes orbit5 {
-      0% {
-        transform: translate(-50%, -100%);
-      }
-      50% {
-        transform:  translate(-50%, -60px);
-      }
-      100% {
-        transform:  translate(-50%, -100%);
-      }
-    }
-    @keyframes orbit6 {
-      0% {
-        transform: translate(0%, -100%);
-      }
-      50% {
-        transform:  translate(0%, -60px);
-      }
-      100% {
-        transform:  translate(0%, -100%);
-      }
-    }
-    @keyframes orbit7 {
-      0% {
-        transform: translate(-100%, -100%);
-      }
-      50% {
-        transform:  translate(-100%, -60px);
-      }
-      100% {
-        transform:  translate(-100%, -100%);
+    font-family: 'Inconsolata', monospace;
+  }
+
+  #content {
+    font-family: 'Inconsolata', monospace;
+    li {
+      span {
+        font-weight:  bold;
       }
     }
   }
 }
 li {
   list-style-type: none;
-}
-#content {
-  li {
-    span {
-      font-weight:  bold;
-    }
-  }
 }
