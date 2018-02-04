@@ -1,25 +1,181 @@
-body {
-  margin: 0 auto;
+body,
+html {
+  width: 100%;
+  height: 100%;
   text-align: center;
+  font-family: Ubuntu;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background: #cccccc;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #cccccc 0%, #eeeeee 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #cccccc 0%, #eeeeee 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #cccccc 0%, #eeeeee 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#eeeeee', GradientType=0);
+  /* IE6-9 */
 }
-body h1 {
-  text-align: center;
+body .form-container,
+html .form-container {
+  margin-top: 50px;
+  width: 100%;
 }
-body #form {
+body .form-container .wrapper,
+html .form-container .wrapper {
   padding: 0 15px;
-  width: 200px;
+  box-sizing: border-box;
+  max-width: 500px;
   margin: 0 auto;
 }
-body #form label,
-body #form input {
-  margin: 15px auto;
-  width: 100%;
-}
-body .window {
-  width: 100%;
+body .form-container .wrapper h1,
+html .form-container .wrapper h1 {
   text-align: center;
-  margin: 20px auto;
+  color: #4b4b4b;
 }
-input:required:valid {
-  border-color: green;
+body .form-container .wrapper form,
+html .form-container .wrapper form {
+  width: 100%;
+  margin: 0 auto;
+}
+body .form-container .wrapper form .url,
+html .form-container .wrapper form .url,
+body .form-container .wrapper form .element,
+html .form-container .wrapper form .element {
+  width: 100%;
+  margin: 20px 0;
+}
+body .form-container .wrapper form .url input,
+html .form-container .wrapper form .url input,
+body .form-container .wrapper form .element input,
+html .form-container .wrapper form .element input {
+  -webkit-transition: all ease-in-out 300ms;
+  -moz-transition: all ease-in-out 300ms;
+  -ms-transition: all ease-in-out 300ms;
+  -o-transition: all ease-in-out 300ms;
+  transition: all ease-in-out 300ms;
+  width: 100%;
+  font-family: Ubuntu !important;
+  padding: 7px 5px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  display: inline-block;
+  border: solid 2px white;
+  outline: none;
+  background-color: white !important;
+  -webkit-box-shadow: 10px 10px 16px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 16px -8px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 16px -8px rgba(0, 0, 0, 0.75);
+}
+body .form-container .wrapper form .url input:focus,
+html .form-container .wrapper form .url input:focus,
+body .form-container .wrapper form .element input:focus,
+html .form-container .wrapper form .element input:focus {
+  border: solid 2px blueviolet;
+}
+body .form-container .wrapper form .url input:-webkit-autofill,
+html .form-container .wrapper form .url input:-webkit-autofill,
+body .form-container .wrapper form .element input:-webkit-autofill,
+html .form-container .wrapper form .element input:-webkit-autofill,
+body .form-container .wrapper form .url input:-webkit-autofill:hover,
+html .form-container .wrapper form .url input:-webkit-autofill:hover,
+body .form-container .wrapper form .element input:-webkit-autofill:hover,
+html .form-container .wrapper form .element input:-webkit-autofill:hover,
+body .form-container .wrapper form .url input:-webkit-autofill:focus,
+html .form-container .wrapper form .url input:-webkit-autofill:focus,
+body .form-container .wrapper form .element input:-webkit-autofill:focus,
+html .form-container .wrapper form .element input:-webkit-autofill:focus,
+body .form-container .wrapper form .url input:-webkit-autofill:active,
+html .form-container .wrapper form .url input:-webkit-autofill:active,
+body .form-container .wrapper form .element input:-webkit-autofill:active,
+html .form-container .wrapper form .element input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+body .form-container .wrapper form .url #url.red,
+html .form-container .wrapper form .url #url.red,
+body .form-container .wrapper form .element #url.red,
+html .form-container .wrapper form .element #url.red,
+body .form-container .wrapper form .url #htmlElement.red,
+html .form-container .wrapper form .url #htmlElement.red,
+body .form-container .wrapper form .element #htmlElement.red,
+html .form-container .wrapper form .element #htmlElement.red {
+  border: solid 2px #ff3838;
+}
+body .form-container .wrapper form .url .error-msg,
+html .form-container .wrapper form .url .error-msg,
+body .form-container .wrapper form .element .error-msg,
+html .form-container .wrapper form .element .error-msg {
+  font-size: 12px;
+  color: #ff3838;
+  font-weight: 600;
+  margin-left: 10px;
+}
+body .form-container .wrapper form .buttons,
+html .form-container .wrapper form .buttons,
+body .form-container .wrapper form .reset,
+html .form-container .wrapper form .reset {
+  margin-top: 20px;
+  width: 100%;
+}
+body .form-container .wrapper form .buttons .button,
+html .form-container .wrapper form .buttons .button,
+body .form-container .wrapper form .reset .button,
+html .form-container .wrapper form .reset .button {
+  padding: 10px 40px;
+  margin: 0 5px;
+  border-radius: 5px;
+  background-color: #4b4b4b;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  border: solid 1px transparent;
+  outline: none;
+  -webkit-box-shadow: 10px 10px 16px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 16px -8px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 16px -8px rgba(0, 0, 0, 0.75);
+}
+body .form-container .wrapper form .buttons .button.pull-right,
+html .form-container .wrapper form .buttons .button.pull-right,
+body .form-container .wrapper form .reset .button.pull-right,
+html .form-container .wrapper form .reset .button.pull-right {
+  float: right;
+}
+body .output,
+html .output {
+  padding: 20px 10px;
+}
+body .output .loader,
+html .output .loader {
+  margin: 0 auto;
+  visibility: hidden;
+  opacity: 0;
+}
+body .output .loader img,
+html .output .loader img {
+  width: 160px;
+}
+body .output .loader.visible,
+html .output .loader.visible {
+  visibility: visible;
+  opacity: 1;
+}
+body .output .window,
+html .output .window,
+body .output #content,
+html .output #content {
+  font-family: 'Inconsolata', monospace;
+}
+body .output .window li,
+html .output .window li,
+body .output #content li,
+html .output #content li {
+  list-style-type: none;
+}
+body .output .window li span,
+html .output .window li span,
+body .output #content li span,
+html .output #content li span {
+  font-weight: bold;
 }
