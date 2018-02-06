@@ -81,7 +81,7 @@ $('#getUrl').on('click', function count () {
       }
     });
     $('.error-msg').text('');
-    var countElem = new ajaxSend('parsing.php', windows, 'POST'); //create new object for get count
+    var countElem = new ajaxSend('php/parsing.php', windows, 'POST'); //create new object for get count
     countElem.sendData(); //if validation is OK run the script
   }
 });
@@ -94,7 +94,7 @@ $('#getStat').on('click', function statistics() {
       }
     });
     $('.error-msg').text('');
-    var getStatistics = new ajaxSend('dataBase.php', staticOut, 'GET'); //create new object for get statistics
+    var getStatistics = new ajaxSend('php/dataBase.php', staticOut, 'GET'); //create new object for get statistics
     getStatistics.sendData();
   }
 });
